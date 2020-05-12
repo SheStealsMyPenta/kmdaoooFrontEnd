@@ -1,0 +1,9 @@
+.QRCode{
+    height:70px;
+    width: 70px;
+    z-index: 20;
+
+    position: relative;
+    right:120px;
+bottom: auto;
+}

@@ -1,0 +1,27 @@
+@keyframes mymove /* 对应animation-name，里面为执行的动画*/
+{
+from {left:200px;}/*执行动画的初始位置*/
+to {left:0px;}/*动画结束位置*/
+0% {
+opacity: 0.1; /*初始状态 透明度为10%*/
+}
+50% {
+opacity: 0.5; /*中间状态 透明度为50%*/
+}
+100% {
+opacity: 1; /*结尾状态 不透明*/
+}
+}
+
+@-webkit-keyframes mymove/* 对应-webkit-animation-name，里面为执行的动画*/
+{
+from {left:200px;}/*执行动画的初始位置*/
+to {left:0px;}/*动画结束位置*/
+}
+
+
+.wrapper {
+    background-color: red;
+    animation-name:mymove;
+    animation-duration:3s;
+}
