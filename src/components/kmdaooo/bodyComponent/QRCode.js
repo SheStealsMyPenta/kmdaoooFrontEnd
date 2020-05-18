@@ -2,42 +2,54 @@ import React, { Component } from 'react'
 import html2canvas from "html2canvas";
 import axios from "axios"
 import "../css/QRCode.css"
-
+import qs from 'qs';
 export default class QRCode extends Component {
-    componentDidMount() {var imgs = new Image();
-        imgs.crossOrigin = "Anonymous"; //注意存放顺序
-        imgs.src = "http://localhost:3000/screenshot.png";
+    componentDidMount() {
         const target = document.getElementById("QRCode")
-        const result = document.getElementById("result")
-        axios.post('/getQRCode', {})
-            .then(function (response) {
-               console.log("图片地址为"+response.data);
-               
-                // console.log(response.data);
-                
-                let qrCode = document.getElementById("QRCode")
-                qrCode.src=response.data
-                target.src= response.data
-                html2canvas(target, {
-                    allowTaint: true,
-                     useCORS: true,
-                     height: 100,
-                     width: 100,
-                 }).then(function (canvas) {
-                     let resultStr = canvas.toDataURL("image/png")
-              
-                     console.log("结果为"+resultStr);
-         
-                 })
+        let _this = this;
 
+
+        axios.post('/getQRCode',
+            qs.stringify({
+                inviteCode: this.props.inviteCode
+            })
+        )
+            .then(function (response) {
+                console.log("图片地址为" + response.data);
+                target.src = response.data
+                target.onload = function () {
+                    _this.props.convertAndGenerateImg()
+                    _this.props.resetValue()
+                }
             })
 
-      
+
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.inviteCode !== this.props.inviteCode) {
+            const target = document.getElementById("QRCode")
+            let _this = this;
+            axios.post('/getQRCode',
+                qs.stringify({
+                    inviteCode: this.props.inviteCode
+                })
+            )
+                .then(function (response) {
+                    console.log("图片地址为" + response.data);
+                    target.src = response.data
+                    target.onload = function () {
+                        _this.props.convertAndGenerateImg()
+                        _this.props.resetValue()
+                    }
+
+                })
+
+        }
     }
     render() {
         return (
             <>
-                <img crossOrigin="anonymous" className="QRCode" id="QRCode" src="/image/screenshot.png">
+                <img crossOrigin="anonymous" className="QRCode" id="QRCode" src="">
                 </img>
             </>
 

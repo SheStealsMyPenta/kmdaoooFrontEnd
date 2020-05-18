@@ -1,7 +1,4 @@
 .body{
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 640px;
-    width: 437px;
-    margin: auto;
+    max-width: 437px;
+    height: calc(100% - 62);
 }

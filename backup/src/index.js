@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import KBody from "./components/kmdaooo/KBody";
+import App from './App'
 // import { Router, Route,BrowserRouter } from 'react-router'
 
-ReactDOM.render(<KBody />
+ReactDOM.render(<App />
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

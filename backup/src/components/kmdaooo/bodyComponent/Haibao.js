@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import KBody from '../components/kmdaooo/KBody'
-export default class KMDaoo extends Component {
+
+export default class Haibao extends Component {
     render() {
         return (
             <div>
-            <KBody></KBody>
+                <img src="/image/haibao.jpg" ></img>
             </div>
         )
     }
