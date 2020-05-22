@@ -9,19 +9,19 @@ export default class QRCode extends Component {
         let _this = this;
 
 
-        axios.post('/getQRCode',
-            qs.stringify({
-                inviteCode: this.props.inviteCode
-            })
-        )
-            .then(function (response) {
-                console.log("图片地址为" + response.data);
-                target.src = response.data
-                target.onload = function () {
-                    _this.props.convertAndGenerateImg()
-                    _this.props.resetValue()
-                }
-            })
+        // axios.post('/getQRCode',
+        //     qs.stringify({
+        //         inviteCode: this.props.inviteCode
+        //     })
+        // )
+        //     .then(function (response) {
+        //         console.log("图片地址为" + response.data);
+        //         target.src = response.data
+        //         target.onload = function () {
+        //             _this.props.convertAndGenerateImg()
+        //             _this.props.resetValue()
+        //         }
+        //     })
 
 
     }
@@ -35,13 +35,12 @@ export default class QRCode extends Component {
                 })
             )
                 .then(function (response) {
-                    console.log("图片地址为" + response.data);
-                    target.src = response.data
+                    // console.log("图片地址为" + response.data);
                     target.onload = function () {
                         _this.props.convertAndGenerateImg()
                         _this.props.resetValue()
                     }
-
+                    target.src = response.data
                 })
 
         }
